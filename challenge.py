@@ -1,8 +1,12 @@
 import time
 
 
-def finish_date():
-    # You have to code here!!
+def finish_date(func):
+    def wrapper(*args,**kwargs):
+        func(*args,**kwargs)
+        finish_time = time.strftime('%d/%m/%Y - %H:%M:%S', time.localtime())
+        print(f'The function {func.__name__} finished its execution at {finish_time}')
+    return wrapper
 
 
 @finish_date
